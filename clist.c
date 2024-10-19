@@ -9,7 +9,7 @@ struct Node { //create structure
 };
 
 Node *createNode(int data) { //function to create new node 
-    Node *newNode = (Node*)malloc(sizeof(Node)); //allocate memory
+    Node *newNode = malloc(sizeof(Node)); //allocate memory
     //you need to convert the 'void *' that malloc returns to type 'Node *'
     newNode->data = data;//assigns the data entered as parameter
     newNode->next = NULL; //assigns next node to NULL (useful if its the last one)
