@@ -19,8 +19,6 @@ Node *createNode(int data){
 
 void endlist(Node **head, int data){
     Node *newNode = createNode(data);
-    if (newNode == NULL)
-        return;
     Node *temp = *head;
     if (*head == NULL){
         *head = newNode;
@@ -46,4 +44,5 @@ int main(void){
     endlist(&head, 2);
     endlist(&head, 3);
     printList(head);
+    free(head);
 }
