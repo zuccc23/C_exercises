@@ -3,13 +3,14 @@
 
 int f(char *str){
     int i = 0;
+    int count = 0;
     while (str[i]){
         if (str[i] >= 'A' && str[i] <= 'Z'){
-            return (1);
+            count++;
         }
         i++;
     }
-    return (0);
+    return (count);
 }
 
 int ft_any(char **tab, int(*f)(char *)){
@@ -22,11 +23,22 @@ int ft_any(char **tab, int(*f)(char *)){
     return(0);
 }
 
+int ft_count_if(char **tab, int length, int(*f)(char*)){
+    int i = 0;
+    int count = 0;
+    while (i < length){
+        count += f(tab[i]);
+        i++;
+    }
+    return(count);
+}
+
 // char *str = "Daniya";
 // char *strr = "Mario";
 // char *strs[] = {"Daniya", "Mario", NULL};
 
 int main(void){
-    char *tab[]= {"bbbbe", "gyhdjzevdhc", NULL};
-    printf("%d\n", ft_any(tab, &f));
+    int length = 3;
+    char *tab[]= {"bbHHHbe", "gyhdjzHevdhc", "abc"};
+    printf("%d\n", ft_count_if(tab, length, &f));
 }
