@@ -3,16 +3,17 @@
 #include "ft_list.h"
 
 t_list *ft_list_push_strs(int size, char **strs){
-    int i = size - 1;
+    int i = 0;
     t_list *newNode = ft_create_elem(strs[i]);
-    t_list *temp = newNode;
-    i--;
-    while (i >= 0){
-        temp = temp->next;
+    t_list *temp;
+    i++;
+    while (i < size){
         temp = ft_create_elem(strs[i]);
-        i--;
+        temp->next = newNode;
+        newNode = temp;
+        i++;
     }
-    return (temp);
+    return (newNode);
 }
 
 void print_list(t_list *head){
