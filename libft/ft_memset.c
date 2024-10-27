@@ -1,32 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/25 22:18:52 by dahmane           #+#    #+#             */
-/*   Updated: 2024/10/27 00:07:46 by dahmane          ###   ########.fr       */
+/*   Created: 2024/10/25 22:39:13 by dahmane           #+#    #+#             */
+/*   Updated: 2024/10/27 13:34:42 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-#include <ctype.h>
+#include <string.h>
 #include <stdio.h>
 
-int ft_isalpha(int c)
+void	*ft_memset(void *s, int c, size_t n)
 {
-    if ((c >= 65 && c<= 90) || (c >= 97 && c <=122))
-    {
-        return (1);
-    }
-    else
-        return (0);
+	size_t	i;
+	unsigned char	*schar;
+	
+	i = 0;
+	schar = (unsigned char*)s;
+	if (!s)
+	{
+		return (NULL);
+	}
+	while (i < n)
+	{
+		schar[i] = c;
+		i++;
+	}
+	return (s);
 }
 
-int main(void)
+int	main(void)
 {
-    int c = 97;
-    printf("%d\n", ft_isalpha(c));
-    printf("%d", isalpha(c));
+    int c = 38;
+    int str[] = {1, 2, 3};
+    int strr[] = {1, 2, 3};
+    memset(str, c, 3);
+    ft_memset(strr, c, 3);
+    printf("%d\n", str[1]);
+    printf("%d", strr[1]);
 }

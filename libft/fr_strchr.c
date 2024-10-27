@@ -1,37 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   fr_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/25 23:30:22 by dahmane           #+#    #+#             */
-/*   Updated: 2024/10/26 23:36:57 by dahmane          ###   ########.fr       */
+/*   Created: 2024/10/26 23:46:40 by dahmane           #+#    #+#             */
+/*   Updated: 2024/10/27 00:07:00 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
+
+char	*ft_strchr(const char *s, int c)
+{
+	while (*s)
+	{
+		if (*s == c)
+			return ((char *)s);
+		s++;
+	}
+	if (c == '\0')
+		return ((char *)s);
+	return (NULL);
+}
 
 #include <string.h>
 #include <stdio.h>
 
-void	ft_bzero(void *s, size_t n)
-{
-    int i;
-    i = 0;
-    unsigned char *schar = (unsigned char*)s;
-    while (i < n)
-    {
-        schar[i] = 0;
-        i++;
-    }
-}
-
 int	main(void)
 {
-    size_t c = 1;
+    int c = 'e';
     char str[] = "hello";
     char strr[] = "hello";
-    bzero(str+1, c);
-    ft_bzero(strr+1, c);
-    printf("%s\n", str);
-    printf("%s\n", strr);
+    strchr(str, c);
+    ft_strchr(strr, c);
+    printf("%s\n", strchr(str, c));
+    printf("%s\n", ft_strchr(strr, c));
 }

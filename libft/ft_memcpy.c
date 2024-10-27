@@ -1,37 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/25 23:30:22 by dahmane           #+#    #+#             */
-/*   Updated: 2024/10/26 23:36:57 by dahmane          ###   ########.fr       */
+/*   Created: 2024/10/27 00:53:54 by dahmane           #+#    #+#             */
+/*   Updated: 2024/10/27 16:09:52 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 #include <stdio.h>
 
-void	ft_bzero(void *s, size_t n)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-    int i;
-    i = 0;
-    unsigned char *schar = (unsigned char*)s;
-    while (i < n)
-    {
-        schar[i] = 0;
-        i++;
-    }
+	unsigned char	*sdst;
+	unsigned char	*ssrc;
+	
+	sdst = (unsigned char*)dst;
+	ssrc = (unsigned char*)src;
+	if (!src || !dst)
+		return (dst);
+	while (n > 0)
+	{
+		*sdst = *ssrc;
+		sdst++;
+		ssrc++;
+		n--;
+	}
+	return (dst);
 }
 
 int	main(void)
 {
-    size_t c = 1;
-    char str[] = "hello";
+    //int c = 38;
+    char str[] = "olleh";
     char strr[] = "hello";
-    bzero(str+1, c);
-    ft_bzero(strr+1, c);
+    //memcpy(str, strr, 5);
+    //ft_memcpy(str, strr, 2);
     printf("%s\n", str);
-    printf("%s\n", strr);
+    //printf("%s", strr);
 }

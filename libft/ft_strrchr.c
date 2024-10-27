@@ -1,32 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/25 22:18:52 by dahmane           #+#    #+#             */
-/*   Updated: 2024/10/27 00:07:46 by dahmane          ###   ########.fr       */
+/*   Created: 2024/10/27 00:08:35 by dahmane           #+#    #+#             */
+/*   Updated: 2024/10/27 00:47:44 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 
-#include <ctype.h>
-#include <stdio.h>
-
-int ft_isalpha(int c)
+char	*ft_strrchr(const char *s, int c)
 {
-    if ((c >= 65 && c<= 90) || (c >= 97 && c <=122))
-    {
-        return (1);
-    }
-    else
-        return (0);
+	char	*t;
+	
+	t = NULL;
+	while (*s)
+	{
+		if (*s == c)
+			t = (char*)s;
+		s++;
+	}
+	if (c == '\0')
+		return ((char *)s);
+	
+	return (t);
 }
 
-int main(void)
+#include <string.h>
+#include <stdio.h>
+
+int	main(void)
 {
-    int c = 97;
-    printf("%d\n", ft_isalpha(c));
-    printf("%d", isalpha(c));
+    int c = 'l';
+    char str[] = "hello";
+    char strr[] = "hello";
+    printf("%s\n", strrchr(str, c));
+    printf("%s\n", ft_strrchr(strr, c));
 }
