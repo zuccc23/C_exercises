@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 14:00:41 by dahmane           #+#    #+#             */
-/*   Updated: 2024/10/27 16:10:54 by dahmane          ###   ########.fr       */
+/*   Updated: 2024/10/28 13:35:18 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	i = 0;
 	sdst = (unsigned char*)dst;
 	ssrc = (unsigned char*)src;
-	if (!src || !dst)
+	if (len == 0)
 		return (dst);
 	while (i < len - 1)
 	{
@@ -42,12 +42,12 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 
 int	main(void)
 {
-    //int c = 38;
-    char src[] = "helloo";
-    char *dest;
+	//int c = 38;
+	char src[] = "hello";
+	char *dest;
 
-    dest = src+2;
-    //memmove(dest, src, 3);
-    ft_memmove(dest, src, 3);
-    printf("%s\n", dest);
+	dest = src+2;
+	memmove(dest, src, 0);
+	//ft_memmove(dest, src, 0);
+	printf("%s\n", dest);
 }
