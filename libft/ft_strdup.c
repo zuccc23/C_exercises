@@ -1,49 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/28 14:34:45 by dahmane           #+#    #+#             */
-/*   Updated: 2024/10/28 17:11:54 by dahmane          ###   ########.fr       */
+/*   Created: 2024/10/28 17:18:00 by dahmane           #+#    #+#             */
+/*   Updated: 2024/10/29 13:40:58 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "libft.h"
 
-char	*ft_strnstr(const char *src, const char *dest, size_t len)
-{
-	size_t i;
-	size_t j;
+ char		*ft_strdup(const char *s1)
+ {
+	int size;
+	char *s2;
+	int i = 0;
 
-	j = 0;
-	i = 0;
-	//bonjourdanieuhdaniya daniya 
-	while (i < len && src[i])
+	size = ft_strlen(s1);
+	s2 = malloc(sizeof(char) * size);
+	if (s2 == NULL)
+		return (NULL);
+	while (s1[i])
 	{
-		j = 0;
-		while (src[i+j] == dest[j] && i+j < len)
-		{
-			if (dest[j + 1] == '\0')
-				return (&src[i]);
-			j++;
-		}
+		s2[i] = s1[i]; 
 		i++;
 	}
-	return (NULL);
-}
+	s2[i] = '\0';
+	return (s2);
+ }
 
 int	main(void)
 {
 	int c = 'e';
-	size_t n = 3;
-	char str[] = "nfiovphello";
-	char strr[] = "hello";
+	size_t n = 1;
+	char str[] = "hello";
+	char strr[] = "hellow";
 	char *res = memchr(str, c, n);
 	//memchr(str, c, n);
 	//ft_memchr(strr, c, n);
-	printf("%s\n", ft_strnstr(str, strr, 12));
-	//printf("%s\n", ft_memchr(strr, c));
+	printf("%s\n", ft_strdup(strr));
+	printf("%s\n", strdup(str));
+	free(ft_strdup(strr));
 }
+ 
