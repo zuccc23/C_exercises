@@ -11,11 +11,11 @@ size_t	ft_strlen(const char *str)
 	return (i);
 }
 
-int	main(void)
+/*int	main(void)
 {
 	char	chaine[] = "";
 
 	printf("%lu\n", ft_strlen(chaine));
     printf("%lu\n", strlen(chaine));
 	return (0);
-}
+}*/
